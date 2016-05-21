@@ -28,6 +28,8 @@ namespace LibUI
         protected static extern IntPtr uiNewWindow(string title, int width, int height, bool hasMenubar);
         #endregion
 
+        private Control child;
+
         /// <summary>
         /// Creates a new window.
         /// </summary>
@@ -57,7 +59,7 @@ namespace LibUI
         }
 
         /// <summary>
-        /// Gets of sets the window's title.
+        /// Gets or sets the window's title.
         /// </summary>
         public string Title
         {
@@ -72,13 +74,18 @@ namespace LibUI
         }
         
         /// <summary>
-        /// Adds a control to the window.
+        /// Gets or sets the child control.
         /// </summary>
         public Control Child
         {
+            get
+            {
+                return child;
+            }
             set
             {
                 uiWindowSetChild(ref Substrate, ref value.Substrate);
+                child = value;
             }
         }
     }
