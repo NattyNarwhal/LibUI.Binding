@@ -25,6 +25,11 @@ namespace LibUI
         protected static extern int uiWindowSetMargined(IntPtr control, int margin);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewWindow(string title, int width, int height, bool hasMenubar);
+        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        protected static extern void uiWindowOnClosing(IntPtr b, uiWindowOnClosingDelegate f, IntPtr data);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        protected delegate void uiWindowOnClosingDelegate(IntPtr b, IntPtr data);
         #endregion
 
         private Control child;
@@ -39,6 +44,16 @@ namespace LibUI
         public Window(string title, int width, int height, bool hasMenubar)
         {
             Substrate = uiNewWindow(title, width, height, hasMenubar);
+
+            uiWindowOnClosing(Substrate, (b, f) =>
+                { OnClosing(new EventArgs()); }, IntPtr.Zero);
+        }
+
+        public event EventHandler<EventArgs> Closing;
+
+        protected virtual void OnClosing(EventArgs e)
+        {
+            Closing?.Invoke(this, e);
         }
 
         /// <summary>

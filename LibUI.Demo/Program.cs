@@ -25,6 +25,12 @@ namespace LibUI.Demo
                 counter++;
                 w.Title = counter.ToString();
             };
+            w.Closing += (o, e) =>
+            {
+                w.MessageBox("Bye!", "See you later");
+                w.Destroy();
+                Application.Quit();
+            };
 
             w.Child = x;
             x.Append(b);
