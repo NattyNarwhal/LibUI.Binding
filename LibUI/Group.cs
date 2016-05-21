@@ -31,12 +31,9 @@ namespace LibUI
         private Control child;
 
         /// <summary>
-        /// Creates a new window.
+        /// Creates a new group.
         /// </summary>
-        /// <param name="title">The window's title.</param>
-        /// <param name="width">How wide the window is, in pixels.</param>
-        /// <param name="height">How tall the window is, in pixels.</param>
-        /// <param name="hasMenubar">If the window should have a menu bar.</param>
+        /// <param name="title">The group's title.</param>
         public Group(string title)
         {
             Substrate = uiNewGroup(title);
