@@ -20,10 +20,11 @@ namespace LibUI.Demo
 
             VBox x = new VBox();
 
+#if DEBUG
             Console.WriteLine(w.Handle);
             Console.WriteLine(b.Handle);
             Console.WriteLine(x.Handle);
-            Console.WriteLine(Marshal.SizeOf(w.Substrate));
+#endif
 
             w.Child = x;
             x.Append(b);

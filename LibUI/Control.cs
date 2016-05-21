@@ -79,6 +79,9 @@ namespace LibUI
             }
         }
 
+        /// <summary>
+        /// Gets if the control is top-level in the hierarchy.
+        /// </summary>
         public bool Toplevel
         {
             get
@@ -87,6 +90,9 @@ namespace LibUI
             }
         }
 
+        /// <summary>
+        /// Gets the native handle for the control.
+        /// </summary>
         public UIntPtr Handle
         {
             get
@@ -103,6 +109,7 @@ namespace LibUI
         public void Dispose()
         {
             Destroy();
+            // should we free manually?
         }
     }
 }

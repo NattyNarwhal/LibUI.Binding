@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace LibUI
 {
+    /// <summary>
+    /// A button that raises events when clicked.
+    /// </summary>
     public class Button : Control
     {
         #region Interop
@@ -19,6 +22,10 @@ namespace LibUI
         protected static extern IntPtr uiNewButton(string text);
         #endregion
 
+        /// <summary>
+        /// Creates a new button.
+        /// </summary>
+        /// <param name="text">The text on the button.</param>
         public Button(string text)
         {
             Substrate = (uiControl)Marshal.PtrToStructure(uiNewButton(text), Substrate.GetType());

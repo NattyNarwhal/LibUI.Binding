@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace LibUI
 {
+    /// <summary>
+    /// A top-level window, for putting controls inside of.
+    /// </summary>
     public class Window : Control
     {
         #region Interop
@@ -25,6 +28,13 @@ namespace LibUI
         protected static extern IntPtr uiNewWindow(string title, int width, int height, bool hasMenubar);
         #endregion
 
+        /// <summary>
+        /// Creates a new window.
+        /// </summary>
+        /// <param name="title">The window's title.</param>
+        /// <param name="width">How wide the window is, in pixels.</param>
+        /// <param name="height">How tall the window is, in pixels.</param>
+        /// <param name="hasMenubar">If the window should have a menu bar.</param>
         public Window(string title, int width, int height, bool hasMenubar)
         {
             Substrate = (uiControl)Marshal.PtrToStructure(uiNewWindow(title, width, height, false), Substrate.GetType());

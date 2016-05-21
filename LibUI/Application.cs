@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace LibUI
 {
+    /// <summary>
+    /// Functions to initialize the library and control the event flow of the application.
+    /// </summary>
     public static class Application
     {
         #region Interop
