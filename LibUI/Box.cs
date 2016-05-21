@@ -14,13 +14,13 @@ namespace LibUI
     {
         #region Interop
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiBoxAppend(ref IntPtr box, ref IntPtr control, bool stretchy);
+        protected static extern void uiBoxAppend(IntPtr box, IntPtr control, bool stretchy);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiBoxRemove(ref IntPtr box,  ref IntPtr control);
+        protected static extern void uiBoxRemove(IntPtr box,  IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern int uiBoxPadded(ref IntPtr box);
+        protected static extern int uiBoxPadded(IntPtr box);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiBoxSetPadded(ref IntPtr box, int padding);
+        protected static extern void uiBoxSetPadded(IntPtr box, int padding);
         #endregion
 
         // TODO: Should these be in a collection?
@@ -34,7 +34,7 @@ namespace LibUI
         /// </param>
         public void Append(Control c, bool stretchy = false)
         {
-            uiBoxAppend(ref Substrate, ref c.Substrate, stretchy);
+            uiBoxAppend(Substrate, c.Substrate, stretchy);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace LibUI
         /// <param name="c">The control to remove.</param>
         public void Remove(Control c)
         {
-            uiBoxRemove(ref Substrate, ref c.Substrate);
+            uiBoxRemove(Substrate, c.Substrate);
         }
 
         /// <summary>
@@ -53,11 +53,11 @@ namespace LibUI
         {
             get
             {
-                return uiBoxPadded(ref Substrate);
+                return uiBoxPadded(Substrate);
             }
             set
             {
-                uiBoxSetPadded(ref Substrate, value);
+                uiBoxSetPadded(Substrate, value);
             }
         }
     }

@@ -14,15 +14,15 @@ namespace LibUI
     {
         #region Interop
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern string uiWindowTitle(ref IntPtr control);
+        protected static extern string uiWindowTitle(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiWindowSetTitle(ref IntPtr control, string title);
+        protected static extern void uiWindowSetTitle(IntPtr control, string title);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiWindowSetChild(ref IntPtr window, ref IntPtr child);
+        protected static extern void uiWindowSetChild(IntPtr window, IntPtr child);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern int uiWindowMargined(ref IntPtr control);
+        protected static extern int uiWindowMargined(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern int uiWindowSetMargined(ref IntPtr control, int margin);
+        protected static extern int uiWindowSetMargined(IntPtr control, int margin);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewWindow(string title, int width, int height, bool hasMenubar);
         #endregion
@@ -48,11 +48,11 @@ namespace LibUI
         {
             get
             {
-                return uiWindowMargined(ref Substrate);
+                return uiWindowMargined(Substrate);
             }
             set
             {
-                uiWindowSetMargined(ref Substrate, value);
+                uiWindowSetMargined(Substrate, value);
             }
         }
 
@@ -63,11 +63,11 @@ namespace LibUI
         {
             get
             {
-                return uiWindowTitle(ref Substrate);
+                return uiWindowTitle(Substrate);
             }
             set
             {
-                uiWindowSetTitle(ref Substrate, value);
+                uiWindowSetTitle(Substrate, value);
             }
         }
         
@@ -82,7 +82,7 @@ namespace LibUI
             }
             set
             {
-                uiWindowSetChild(ref Substrate, ref value.Substrate);
+                uiWindowSetChild(Substrate, value.Substrate);
                 child = value;
             }
         }

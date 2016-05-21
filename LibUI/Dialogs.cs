@@ -14,13 +14,13 @@ namespace LibUI
     {
         #region Interop
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern string uiOpenFile(ref IntPtr window);
+        static extern string uiOpenFile(IntPtr window);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern string uiSaveFile(ref IntPtr window);
+        static extern string uiSaveFile(IntPtr window);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern void uiMsgBox(ref IntPtr window, string title, string desc);
+        static extern void uiMsgBox(IntPtr window, string title, string desc);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern void uiMsgBoxError(ref IntPtr window, string title, string desc);
+        static extern void uiMsgBoxError(IntPtr window, string title, string desc);
         #endregion
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace LibUI
         /// <returns>What the user picked; null if cancelled.</returns>
         public static string OpenFileDialog(this Window owner)
         {
-            return uiOpenFile(ref owner.Substrate);
+            return uiOpenFile(owner.Substrate);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace LibUI
         /// <returns>What the user picked; null if cancelled.</returns>
         public static string SaveFileDialog(this Window owner)
         {
-            return uiSaveFile(ref owner.Substrate);
+            return uiSaveFile(owner.Substrate);
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace LibUI
             string title, string description, bool error = false)
         {
             if (error)
-                uiMsgBoxError(ref owner.Substrate, title, description);
+                uiMsgBoxError(owner.Substrate, title, description);
             else
-                uiMsgBox(ref owner.Substrate, title, description);
+                uiMsgBox(owner.Substrate, title, description);
         }
     }
 }

@@ -14,9 +14,9 @@ namespace LibUI
     {
         #region Interop
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern string uiButtonText(ref IntPtr control);
+        protected static extern string uiButtonText(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiButtonSetText(ref IntPtr control, string title);
+        protected static extern void uiButtonSetText(IntPtr control, string title);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewButton(string text);
         #endregion
@@ -37,11 +37,11 @@ namespace LibUI
         {
             get
             {
-                return uiButtonText(ref Substrate);
+                return uiButtonText(Substrate);
             }
             set
             {
-                uiButtonSetText(ref Substrate, value);
+                uiButtonSetText(Substrate, value);
             }
         }
     }

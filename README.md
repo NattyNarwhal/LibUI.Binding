@@ -4,7 +4,6 @@ This is a .NET wrapper library around [libui](https://github.com/andlabs/libui),
 
 ## Status
 
-* **Doesn't work.** Controls don't seem to be made properly/handles get fscked for setting children.
 * [ ] Events need to be handled.
 * [ ] Finish up the rest of the structs and functions.
 * [ ] Set up DLL mapping (i.e: use `.so` on *nix, `.dll` on Windows)

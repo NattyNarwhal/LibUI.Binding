@@ -19,27 +19,27 @@ namespace LibUI
         public IntPtr Substrate;
 
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiControlDestroy(ref IntPtr control);
+        protected static extern void uiControlDestroy(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern UIntPtr uiControlHandle(ref IntPtr control);
+        protected static extern UIntPtr uiControlHandle(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern IntPtr uiControlParent(ref IntPtr control);
+        protected static extern IntPtr uiControlParent(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiControlSetParent(ref IntPtr control, ref IntPtr parent);
+        protected static extern void uiControlSetParent(IntPtr control, IntPtr parent);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern bool uiControlToplevel(ref IntPtr control);
+        protected static extern bool uiControlToplevel(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern bool uiControlVisible(ref IntPtr control);
+        protected static extern bool uiControlVisible(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiControlShow(ref IntPtr control);
+        protected static extern void uiControlShow(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiControlHide(ref IntPtr control);
+        protected static extern void uiControlHide(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern bool uiControlEnabled(ref IntPtr control);
+        protected static extern bool uiControlEnabled(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiControlEnable(ref IntPtr control);
+        protected static extern void uiControlEnable(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiControlDisable(ref IntPtr control);
+        protected static extern void uiControlDisable(IntPtr control);
         #endregion
 
         /// <summary>
@@ -49,14 +49,14 @@ namespace LibUI
         {
             get
             {
-                return uiControlEnabled(ref Substrate);
+                return uiControlEnabled(Substrate);
             }
             set
             {
                 if (value)
-                    uiControlEnable(ref Substrate);
+                    uiControlEnable(Substrate);
                 else
-                    uiControlDisable(ref Substrate);
+                    uiControlDisable(Substrate);
             }
         }
 
@@ -67,14 +67,14 @@ namespace LibUI
         {
             get
             {
-                return uiControlVisible(ref Substrate);
+                return uiControlVisible(Substrate);
             }
             set
             {
                 if (value)
-                    uiControlShow(ref Substrate);
+                    uiControlShow(Substrate);
                 else
-                    uiControlHide(ref Substrate);
+                    uiControlHide(Substrate);
             }
         }
 
@@ -85,7 +85,7 @@ namespace LibUI
         {
             get
             {
-                return uiControlToplevel(ref Substrate);
+                return uiControlToplevel(Substrate);
             }
         }
 
@@ -96,13 +96,13 @@ namespace LibUI
         {
             get
             {
-                return uiControlHandle(ref Substrate);
+                return uiControlHandle(Substrate);
             }
         }
 
         public void Destroy()
         {
-            uiControlDestroy(ref Substrate);
+            uiControlDestroy(Substrate);
         }
 
         public void Dispose()
