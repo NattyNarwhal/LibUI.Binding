@@ -23,7 +23,7 @@ namespace LibUI
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern int uiGroupMargined(IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern int uiGroupSetMargined(IntPtr control, int margin);
+        protected static extern void uiGroupSetMargined(IntPtr control, int margin);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewGroup(string title);
         #endregion
