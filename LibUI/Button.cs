@@ -22,6 +22,7 @@ namespace LibUI
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiButtonOnClicked(IntPtr b, uiButtonOnClickedDelegate f, IntPtr data);
 
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         protected delegate void uiButtonOnClickedDelegate(IntPtr b, IntPtr data);
         #endregion
 

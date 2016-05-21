@@ -23,6 +23,7 @@ namespace LibUI.Demo
             b.Clicked += (o, e) =>
             {
                 counter++;
+                w.Title = counter.ToString();
             };
 
             w.Child = x;
