@@ -14,9 +14,16 @@ namespace LibUI.Demo
         {
             Application.Init();
 
+            int counter = 0;
+
             Window w = new Window("Hello world", 300, 300, false);
-            Button b = new Button("I don't do anything");
+            Button b = new Button("Increment me");
             VBox x = new VBox();
+
+            b.Clicked += (o, e) =>
+            {
+                counter++;
+            };
 
             w.Child = x;
             x.Append(b);

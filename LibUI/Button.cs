@@ -19,6 +19,10 @@ namespace LibUI
         protected static extern void uiButtonSetText(IntPtr control, string title);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewButton(string text);
+        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        protected static extern void uiButtonOnClicked(IntPtr b, uiButtonOnClickedDelegate f, IntPtr data);
+
+        protected delegate void uiButtonOnClickedDelegate(IntPtr b, IntPtr data);
         #endregion
 
         /// <summary>
@@ -28,6 +32,15 @@ namespace LibUI
         public Button(string text)
         {
             Substrate = uiNewButton(text);
+            uiButtonOnClicked(Substrate, (b, f) =>
+                { OnClicked(new EventArgs()); }, IntPtr.Zero);
+        }
+
+        public event EventHandler<EventArgs> Clicked;
+
+        protected virtual void OnClicked(EventArgs e)
+        {
+            Clicked?.Invoke(this, e);
         }
 
         /// <summary>
