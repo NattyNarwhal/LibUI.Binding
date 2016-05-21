@@ -1,5 +1,4 @@
-﻿using LibUI.Native;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -15,15 +14,15 @@ namespace LibUI
     {
         #region Interop
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern string uiWindowTitle(ref uiControl control);
+        protected static extern string uiWindowTitle(ref IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiWindowSetTitle(ref uiControl control, string title);
+        protected static extern void uiWindowSetTitle(ref IntPtr control, string title);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiWindowSetChild(ref uiControl window, ref uiControl child);
+        protected static extern void uiWindowSetChild(ref IntPtr window, ref IntPtr child);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern int uiWindowMargined(ref uiControl control);
+        protected static extern int uiWindowMargined(ref IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern int uiWindowSetMargined(ref uiControl control, int margin);
+        protected static extern int uiWindowSetMargined(ref IntPtr control, int margin);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewWindow(string title, int width, int height, bool hasMenubar);
         #endregion
@@ -39,8 +38,7 @@ namespace LibUI
         /// <param name="hasMenubar">If the window should have a menu bar.</param>
         public Window(string title, int width, int height, bool hasMenubar)
         {
-            Substrate = (uiControl)Marshal.PtrToStructure(uiNewWindow(title, width, height, false), Substrate.GetType());
-            // Substrate = uiNewWindow(title, width, height, hasMenubar);
+            Substrate = uiNewWindow(title, width, height, hasMenubar);
         }
 
         /// <summary>

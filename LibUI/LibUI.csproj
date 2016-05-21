@@ -45,7 +45,6 @@
     <Compile Include="Button.cs" />
     <Compile Include="Control.cs" />
     <Compile Include="Dialogs.cs" />
-    <Compile Include="NativeTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Window.cs" />
   </ItemGroup>

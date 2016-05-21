@@ -1,5 +1,4 @@
-﻿using LibUI.Native;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -15,13 +14,13 @@ namespace LibUI
     {
         #region Interop
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern string uiOpenFile(ref uiControl window);
+        static extern string uiOpenFile(ref IntPtr window);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern string uiSaveFile(ref uiControl window);
+        static extern string uiSaveFile(ref IntPtr window);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern void uiMsgBox(ref uiControl window, string title, string desc);
+        static extern void uiMsgBox(ref IntPtr window, string title, string desc);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern void uiMsgBoxError(ref uiControl window, string title, string desc);
+        static extern void uiMsgBoxError(ref IntPtr window, string title, string desc);
         #endregion
 
         /// <summary>

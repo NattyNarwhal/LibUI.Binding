@@ -1,5 +1,4 @@
-﻿using LibUI.Native;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -15,9 +14,9 @@ namespace LibUI
     {
         #region Interop
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern string uiButtonText(ref uiControl control);
+        protected static extern string uiButtonText(ref IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiButtonSetText(ref uiControl control, string title);
+        protected static extern void uiButtonSetText(ref IntPtr control, string title);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewButton(string text);
         #endregion
@@ -28,7 +27,7 @@ namespace LibUI
         /// <param name="text">The text on the button.</param>
         public Button(string text)
         {
-            Substrate = (uiControl)Marshal.PtrToStructure(uiNewButton(text), Substrate.GetType());
+            Substrate = uiNewButton(text);
         }
 
         /// <summary>

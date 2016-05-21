@@ -1,5 +1,4 @@
-﻿using LibUI.Native;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -15,13 +14,13 @@ namespace LibUI
     {
         #region Interop
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiBoxAppend(ref uiControl box, ref uiControl control, bool stretchy);
+        protected static extern void uiBoxAppend(ref IntPtr box, ref IntPtr control, bool stretchy);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiBoxRemove(ref uiControl box,  ref uiControl control);
+        protected static extern void uiBoxRemove(ref IntPtr box,  ref IntPtr control);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern int uiBoxPadded(ref uiControl box);
+        protected static extern int uiBoxPadded(ref IntPtr box);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void uiBoxSetPadded(ref uiControl box, int padding);
+        protected static extern void uiBoxSetPadded(ref IntPtr box, int padding);
         #endregion
 
         // TODO: Should these be in a collection?
@@ -75,7 +74,7 @@ namespace LibUI
 
         public HBox()
         {
-            Substrate = (uiControl)Marshal.PtrToStructure(uiNewHorizontalBox(), Substrate.GetType());
+            Substrate = uiNewHorizontalBox();
         }
     }
 
@@ -91,7 +90,7 @@ namespace LibUI
 
         public VBox()
         {
-            Substrate = (uiControl)Marshal.PtrToStructure(uiNewVerticalBox(), Substrate.GetType());
+            Substrate = uiNewVerticalBox();
         }
     }
 }
