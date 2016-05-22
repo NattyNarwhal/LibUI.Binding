@@ -66,14 +66,17 @@ namespace LibUI
         {
             Substrate = uiNewColorButton();
             uiColorButtonOnChanged(Substrate, (b, f) =>
-                { OnClicked(new EventArgs()); }, IntPtr.Zero);
+                { OnChanged(new EventArgs()); }, IntPtr.Zero);
         }
 
-        public event EventHandler<EventArgs> Clicked;
+        /// <summary>
+        /// This event is fired whenever the user changes the color.
+        /// </summary>
+        public event EventHandler<EventArgs> Changed;
 
-        protected virtual void OnClicked(EventArgs e)
+        protected virtual void OnChanged(EventArgs e)
         {
-            Clicked?.Invoke(this, e);
+            Changed?.Invoke(this, e);
         }
 
         public Color Color

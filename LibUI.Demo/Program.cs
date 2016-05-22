@@ -34,6 +34,7 @@ namespace LibUI.Demo
             n = new Spinbox(0, 100);
             p = new ProgressBar();
             Checkbox c = new Checkbox("Error");
+            ColorButton cb = new ColorButton();
             VBox x = new VBox();
 
             b.Clicked += (o, e) =>
@@ -48,6 +49,11 @@ namespace LibUI.Demo
             };
             n.Changed += handle;
             s.Changed += handle;
+            cb.Changed += (o, e) =>
+            {
+                w.MessageBox("Color", String.Format("{0} {1} {2} {3}",
+                    cb.Color.R, cb.Color.G, cb.Color.B, cb.Color.A));
+            };
             w.Closing += (o, e) =>
             {
                 w.MessageBox("Bye!", "See you later", c.Checked);
@@ -64,6 +70,7 @@ namespace LibUI.Demo
             x.Append(n);
             x.Append(p);
             x.Append(c);
+            x.Append(cb);
             w.Visible = true;
 
             Application.Main();
