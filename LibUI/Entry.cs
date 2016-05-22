@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace LibUI
 {
+    // TODO: make text one iface, and readonly/changed another
     /// <summary>
     /// Shared attributes between each Entry control type.
     /// </summary>
     public interface IEntry
     {
         string Text { get; set; }
-        bool ReadOnly { get; set; }
-        event EventHandler<EventArgs> Changed;
     }
 
     /// <summary>

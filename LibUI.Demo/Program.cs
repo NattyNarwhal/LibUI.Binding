@@ -38,6 +38,8 @@ namespace LibUI.Demo
             p = new ProgressBar();
             Checkbox c = new Checkbox("Error");
             ColorButton cb = new ColorButton();
+            EditableCombobox m = new EditableCombobox();
+            m.Text = w.Title;
             VBox x = new VBox();
 
             b.Clicked += (o, e) =>
@@ -74,6 +76,7 @@ namespace LibUI.Demo
             x.Append(p);
             x.Append(c);
             x.Append(cb);
+            x.Append(m);
             w.Visible = true;
 
             Application.Main();
