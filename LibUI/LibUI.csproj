@@ -45,6 +45,7 @@
     <Compile Include="Button.cs" />
     <Compile Include="Checkbox.cs" />
     <Compile Include="Color.cs" />
+    <Compile Include="Combobox.cs" />
     <Compile Include="Control.cs" />
     <Compile Include="Dialogs.cs" />
     <Compile Include="Entry.cs" />
