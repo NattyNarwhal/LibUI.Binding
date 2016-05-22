@@ -16,7 +16,7 @@ namespace LibUI
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiProgressBarSetValue(IntPtr control, long value);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern IntPtr uiProgressBar();
+        protected static extern IntPtr uiNewProgressBar();
         #endregion
 
         /// <summary>
@@ -24,14 +24,17 @@ namespace LibUI
         /// </summary>
         public ProgressBar()
         {
-            Substrate = uiProgressBar();
+            Substrate = uiNewProgressBar();
         }
 
         public long Value
         {
             set
             {
-                uiProgressBarSetValue(Substrate, value);
+                if (value >= 0 && value <= 100)
+                    uiProgressBarSetValue(Substrate, value);
+                else
+                    throw new ArgumentOutOfRangeException("ProgressBar only supports values 0-100.");
             }
         }
     }

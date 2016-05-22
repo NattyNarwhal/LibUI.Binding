@@ -9,22 +9,44 @@ namespace LibUI.Demo
 {
     class Program
     {
+        static Slider s;
+        static Spinbox n;
+        static ProgressBar p;
+
+        static long val = 0;
+
+        static void ApplyValues(long v)
+        {
+            val = v;
+            p.Value = val;
+            s.Value = val;
+            n.Value = val;
+        }
+
         [STAThread]
         static void Main(string[] args)
         {
             Application.Init();
 
-            int counter = 0;
-
             Window w = new Window("Hello world", 300, 300, false);
             Button b = new Button("Increment me");
+            s = new Slider(0, 100);
+            n = new Spinbox(0, 100);
+            p = new ProgressBar();
             VBox x = new VBox();
 
             b.Clicked += (o, e) =>
             {
-                counter++;
-                w.Title = counter.ToString();
+                val++;
+                ApplyValues(val);
             };
+            EventHandler<EventArgs> handle = (o, e) =>
+            {
+                var v = ((INumInput)o).Value;
+                ApplyValues(v);
+            };
+            n.Changed += handle;
+            s.Changed += handle;
             w.Closing += (o, e) =>
             {
                 w.MessageBox("Bye!", "See you later");
@@ -32,8 +54,14 @@ namespace LibUI.Demo
                 Application.Quit();
             };
 
+            w.Margins = 5;
             w.Child = x;
+
+            x.Padding = 5;
             x.Append(b);
+            x.Append(s);
+            x.Append(n);
+            x.Append(p);
             w.Visible = true;
 
             Application.Main();

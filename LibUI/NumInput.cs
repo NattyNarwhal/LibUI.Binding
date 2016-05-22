@@ -44,7 +44,7 @@ namespace LibUI
         /// Creates a slider.
         /// </summary>
         /// <param name="min">The minimum value that can be entered.</param>
-        /// <param name="min">The maximium value that can be entered.</param>
+        /// <param name="max">The maximium value that can be entered.</param>
         public Slider(long min, long max)
         {
             Substrate = uiNewSlider(min, max);
@@ -99,7 +99,7 @@ namespace LibUI
         /// Creates a spinbox entry.
         /// </summary>
         /// <param name="min">The minimum value that can be entered.</param>
-        /// <param name="min">The maximium value that can be entered.</param>
+        /// <param name="max">The maximium value that can be entered.</param>
         public Spinbox(long min, long max)
         {
             Substrate = uiNewSpinbox(min, max);
