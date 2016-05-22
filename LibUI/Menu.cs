@@ -51,7 +51,7 @@ namespace LibUI
 
         public MenuItem AppendItem(string item)
         {
-            return new MenuItem(uiMenuAppendItem(Substrate, item));
+            return new MenuItem(uiMenuAppendItem(Substrate, item), false);
         }
 
         public CheckableMenuItem AppendCheckableItem(string item, bool initState = false)
@@ -63,17 +63,17 @@ namespace LibUI
 
         public MenuItem AppendQuitItem()
         {
-            return new MenuItem(uiMenuAppendAboutItem(Substrate));
+            return new MenuItem(uiMenuAppendQuitItem(Substrate), true);
         }
 
         public MenuItem AppendPreferencesItem()
         {
-            return new MenuItem(uiMenuAppendPreferencesItem(Substrate));
+            return new MenuItem(uiMenuAppendPreferencesItem(Substrate), true);
         }
 
         public MenuItem AppendAboutItem()
         {
-            return new MenuItem(uiMenuAppendAboutItem(Substrate));
+            return new MenuItem(uiMenuAppendAboutItem(Substrate), true);
         }
 
         public void AppendSeparator()
@@ -104,9 +104,12 @@ namespace LibUI
         protected delegate void uiMenuItemOnClickedDelegate(IntPtr menu, IntPtr window, IntPtr data);
         #endregion
 
-        protected internal MenuItem(IntPtr substrate)
+        protected internal MenuItem(IntPtr substrate, bool special)
         {
             Substrate = substrate;
+            if (!special)
+                uiMenuItemOnClicked(Substrate, (m, w, f) => 
+                    { OnClicked(new EventArgs()); }, IntPtr.Zero);
         }
 
         public event EventHandler<EventArgs> Clicked;
@@ -138,7 +141,7 @@ namespace LibUI
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool uiMenuItemChecked(IntPtr control);
 
-        internal CheckableMenuItem(IntPtr substrate) : base(substrate)
+        internal CheckableMenuItem(IntPtr substrate) : base(substrate, false)
         { }
 
         public bool Checked

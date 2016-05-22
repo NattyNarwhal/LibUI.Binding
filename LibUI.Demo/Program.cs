@@ -31,7 +31,11 @@ namespace LibUI.Demo
         {
             Application.Init();
 
-            Window w = new Window("Hello world", 300, 300, false);
+            Menu fM = new Menu("File");
+            CheckableMenuItem nI = fM.AppendCheckableItem("Hello world", true);
+            MenuItem qI = fM.AppendQuitItem();
+
+            Window w = new Window("Hello world", 300, 300, true);
             Button b = new Button("Increment me");
             s = new Slider(0, 100);
             n = new Spinbox(0, 100);
@@ -58,6 +62,10 @@ namespace LibUI.Demo
             {
                 w.MessageBox("Color", String.Format("{0} {1} {2} {3}",
                     cb.Color.R, cb.Color.G, cb.Color.B, cb.Color.A));
+            };
+            nI.Clicked += (o, e) =>
+            {
+                w.MessageBox("result", nI.Checked.ToString());
             };
             w.Closing += (o, e) =>
             {
