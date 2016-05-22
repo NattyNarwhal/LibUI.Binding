@@ -41,7 +41,7 @@ namespace LibUI
         #endregion
 
         /// <summary>
-        /// Creates an entry.
+        /// Creates a slider.
         /// </summary>
         /// <param name="min">The minimum value that can be entered.</param>
         /// <param name="min">The maximium value that can be entered.</param>
@@ -96,7 +96,7 @@ namespace LibUI
         #endregion
 
         /// <summary>
-        /// Creates an entry.
+        /// Creates a spinbox entry.
         /// </summary>
         /// <param name="min">The minimum value that can be entered.</param>
         /// <param name="min">The maximium value that can be entered.</param>
