@@ -33,6 +33,7 @@ namespace LibUI.Demo
             s = new Slider(0, 100);
             n = new Spinbox(0, 100);
             p = new ProgressBar();
+            Checkbox c = new Checkbox("Error");
             VBox x = new VBox();
 
             b.Clicked += (o, e) =>
@@ -49,7 +50,7 @@ namespace LibUI.Demo
             s.Changed += handle;
             w.Closing += (o, e) =>
             {
-                w.MessageBox("Bye!", "See you later");
+                w.MessageBox("Bye!", "See you later", c.Checked);
                 w.Destroy();
                 Application.Quit();
             };
@@ -62,6 +63,7 @@ namespace LibUI.Demo
             x.Append(s);
             x.Append(n);
             x.Append(p);
+            x.Append(c);
             w.Visible = true;
 
             Application.Main();
