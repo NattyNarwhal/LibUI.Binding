@@ -17,10 +17,13 @@ namespace LibUI.Demo
 
         static void ApplyValues(long v)
         {
-            val = v;
-            p.Value = val;
-            s.Value = val;
-            n.Value = val;
+            if (v >= 0 && v <= 100)
+            {
+                val = v;
+                p.Value = val;
+                s.Value = val;
+                n.Value = val;
+            }
         }
 
         [STAThread]

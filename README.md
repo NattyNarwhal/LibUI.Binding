@@ -4,6 +4,7 @@ This is a .NET wrapper library around [libui](https://github.com/andlabs/libui),
 
 ## Status
 
-* [ ] Events need to be handled.
+* [X] Events need to be handled.
 * [ ] Finish up the rest of the structs and functions.
+* [ ] Better handle disposing of objects and loose ones
 * [ ] Set up DLL mapping (i.e: use `.so` on *nix, `.dll` on Windows)
