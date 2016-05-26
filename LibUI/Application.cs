@@ -28,6 +28,8 @@ namespace LibUI
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         static extern void uiMain();
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        static extern bool uiMainStep(bool wait);
+        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         static extern void uiQuit();
         #endregion
 
@@ -68,6 +70,24 @@ namespace LibUI
         public static void Main()
         {
             uiMain();
+        }
+        
+        /// <summary>
+        /// Manually steps through an event loop to process UI messages.
+        /// </summary>
+        /// <param name="wait">
+        /// If true, block until a message is recieved. If false and a
+        /// message is available If false, and a message is available,
+        /// process it immediately (returning either true or false
+        /// depending on the message), otherwise return true.
+        /// </param>
+        /// <returns>
+        /// Returns true if a message was processed, false if the main
+        /// loop has quit.
+        /// </returns>
+        public static bool Step(bool wait)
+        {
+            return uiMainStep(wait);
         }
 
         /// <summary>
