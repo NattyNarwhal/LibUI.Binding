@@ -107,6 +107,8 @@ namespace LibUI
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewMultilineEntry(string text);
         [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        protected static extern IntPtr uiNewNonWrappingMultilineEntry(string text);
+        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiMultilineEntryOnChanged(IntPtr c, uiEntryOnChangedDelegate f, IntPtr data);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -119,9 +121,14 @@ namespace LibUI
         /// <param name="text">
         /// The text to put into it, out of the box.
         /// </param>
-        public MultilineEntry(string text = "")
+        /// <param name="wrap">
+        /// If the entry should use word wrapping.
+        /// </param>
+        public MultilineEntry(string text = "", bool wrap = true)
         {
-            Substrate = uiNewMultilineEntry(text);
+            Substrate = wrap ? uiNewNonWrappingMultilineEntry(text) :
+                uiNewMultilineEntry(text);
+            WordWrap = wrap;
 
             uiMultilineEntryOnChanged(Substrate, (b, f) =>
                 { OnChanged(new EventArgs()); }, IntPtr.Zero);
@@ -135,6 +142,17 @@ namespace LibUI
         protected virtual void OnChanged(EventArgs e)
         {
             Changed?.Invoke(this, e);
+        }
+
+        /// <summary>
+        /// Gets if the entry word wraps lines.
+        /// </summary>
+        /// <remarks>
+        /// Word wrap can only be set by the constructor.
+        /// </remarks>
+        public bool WordWrap
+        {
+            get; private set;
         }
 
         public string Text
