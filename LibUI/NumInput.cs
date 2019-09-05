@@ -27,13 +27,13 @@ namespace LibUI
     public class Slider : Control, INumInput
     {
         #region Interop
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern long uiSliderValue(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiSliderSetValue(IntPtr control, long value);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewSlider(long min, long max);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiSliderOnChanged(IntPtr c, uiEntryOnChangedDelegate f, IntPtr data);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -82,13 +82,13 @@ namespace LibUI
     public class Spinbox : Control, INumInput
     {
         #region Interop
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern long uiSpinboxValue(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiSpinboxSetValue(IntPtr control, long value);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewSpinbox(long min, long max);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiSpinboxOnChanged(IntPtr c, uiEntryOnChangedDelegate f, IntPtr data);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]

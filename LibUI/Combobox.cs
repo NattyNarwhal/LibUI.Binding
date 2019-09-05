@@ -22,16 +22,16 @@ namespace LibUI
     public class Combobox : Control, ICombobox
     {
         #region Interop
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewCombobox();
 
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiComboboxAppend(IntPtr control, string item);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern long uiComboboxSelected(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiComboboxSetSelected(IntPtr control, long index);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiComboboxOnSelected(IntPtr b, uiComboboxOnSelectedDelegate f, IntPtr data);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -89,21 +89,21 @@ namespace LibUI
     public class EditableCombobox : Control, ICombobox, IEntry
     {
         #region Interop
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern string uiEditableComboboxText(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiEditableComboboxSetText(IntPtr control, string text);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewEditableCombobox();
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiEditableComboboxAppend(IntPtr control, string item);
-        //[DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        //[DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         //protected static extern long uiComboboxSelected(IntPtr control);
-        //[DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        //[DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         //protected static extern void uiComboboxSetSelected(IntPtr control, long index);
-        //[DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        //[DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         //protected static extern void uiComboboxOnSelected(IntPtr b, uiComboboxOnSelectedDelegate f, IntPtr data);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiEditableComboboxOnChanged(IntPtr b, uiEditableComboboxOnChangedDelegate f, IntPtr data);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]

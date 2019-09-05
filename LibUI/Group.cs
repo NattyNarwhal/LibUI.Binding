@@ -14,17 +14,17 @@ namespace LibUI
     public class Group : Control
     {
         #region Interop
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern string uiGroupTitle(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiGroupSetTitle(IntPtr control, string title);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiGroupSetChild(IntPtr window, IntPtr child);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern int uiGroupMargined(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiGroupSetMargined(IntPtr control, int margin);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewGroup(string title);
         #endregion
 

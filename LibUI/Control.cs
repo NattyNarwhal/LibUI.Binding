@@ -18,27 +18,27 @@ namespace LibUI
         /// </summary>
         public IntPtr Substrate;
 
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiControlDestroy(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern UIntPtr uiControlHandle(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiControlParent(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiControlSetParent(IntPtr control, IntPtr parent);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool uiControlToplevel(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool uiControlVisible(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiControlShow(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiControlHide(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool uiControlEnabled(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiControlEnable(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiControlDisable(IntPtr control);
         #endregion
 

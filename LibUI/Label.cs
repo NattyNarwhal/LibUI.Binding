@@ -13,11 +13,11 @@ namespace LibUI
     public class Label : Control
     {
         #region Interop
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern string uiLabelText(IntPtr control);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void uiLabelSetText(IntPtr control, string text);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiNewLabel(string text);
         #endregion
 

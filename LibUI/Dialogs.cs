@@ -13,13 +13,13 @@ namespace LibUI
     public static class Dialogs
     {
         #region Interop
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         static extern string uiOpenFile(IntPtr window);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         static extern string uiSaveFile(IntPtr window);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         static extern void uiMsgBox(IntPtr window, string title, string desc);
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         static extern void uiMsgBoxError(IntPtr window, string title, string desc);
         #endregion
 
