@@ -12,7 +12,7 @@ namespace LibUI
     /// </summary>
     public class HSeparator : Control
     {
-        [DllImport("libui.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libui", CallingConvention = CallingConvention.Cdecl)]
         protected static extern IntPtr uiSeparator();
 
         public HSeparator()
